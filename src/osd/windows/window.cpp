@@ -790,6 +790,10 @@ void win_window_info::create(running_machine &machine, int index, std::shared_pt
 	window->m_targetorient = window->m_target->orientation();
 	window->m_targetlayerconfig = window->m_target->layer_config();
 
+	// add they switchres display manager
+	if (window->m_fullscreen_safe && options.switch_res())
+		window->m_display_manager = WINOSD(machine)->switchres()->add_display(monitor->devicename().c_str(), config->width, config->height, config->refresh, config->aspect);
+
 	// make the window title
 	if (video_config.numscreens == 1)
 		sprintf(window->m_title, "%s: %s [%s]", emulator_info::get_appname(), machine.system().type.fullname(), machine.system().name);

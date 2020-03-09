@@ -50,6 +50,8 @@ enum class win_window_focus
 };
 
 
+class display_manager;
+
 class win_window_info  : public osd_window_t<HWND>
 {
 public:
@@ -155,6 +157,8 @@ private:
 
 	running_machine &   m_machine;
 	bool                m_attached_mode;
+
+	display_manager *   m_display_manager = 0;
 };
 
 struct osd_draw_callbacks
