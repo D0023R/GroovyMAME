@@ -421,6 +421,10 @@ int sdl_window_info::window_init()
 	// set the specific view
 	set_starting_view(m_index, options.view(), options.view(m_index));
 
+	// add they switchres display manager
+	if (options.switch_res())
+		m_display_manager = downcast<sdl_osd_interface&>(machine().osd()).switchres()->add_display(m_index, monitor(), m_target, &m_win_config);
+
 	// make the window title
 	if (video_config.numscreens == 1)
 		sprintf(m_title, "%s: %s [%s]", emulator_info::get_appname(), m_machine.system().type.fullname(), m_machine.system().name);
