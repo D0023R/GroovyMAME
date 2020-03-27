@@ -92,11 +92,11 @@ const options_entry osd_options::s_option_entries[] =
 	// full screen options
 	{ nullptr,                                nullptr,          OPTION_HEADER,    "OSD FULL SCREEN OPTIONS" },
 	{ OSDOPTION_SWITCHRES,                    "0",              OPTION_BOOLEAN,   "enable resolution switching" },
+	{ OSDOPTION_MODE_SETTING,                 "0",              OPTION_BOOLEAN,   "force resolution switching through Switchres backend" },
 	{ OSDOPTION_MODELINE_GENERATION ";ml",    "1",              OPTION_BOOLEAN,   "Automatic generation of modelines based on the specified monitor type" },
 	{ OSDOPTION_MONITOR ";m",                 "generic_15",     OPTION_STRING,    "Monitor type, e.g.: generic_15, arcade_15, lcd, custom, etc." },
-	{ OSDOPTION_ORIENTATION ";or",            "horizontal",     OPTION_STRING,    "Monitor orientation (horizontal|vertical|rotate|rotate_r|rotate_l)" },
 	{ OSDOPTION_INTERLACE ";in",              "1",              OPTION_BOOLEAN,   "Enable interlaced scanning when necessary" },
-	{ OSDOPTION_DOUBLESCAN ";ds",             "1",              OPTION_BOOLEAN,   "Enable double scanning when necessary (unsupported under Windows)" },
+	{ OSDOPTION_DOUBLESCAN ";ds",             "0",              OPTION_BOOLEAN,   "Enable double scanning when necessary (unsupported by some backends/gpus)" },
 	{ OSDOPTION_SUPER_WIDTH ";cs",            "2560",           OPTION_INTEGER,   "Automatically apply -unevenstretchx if resolution width is equal or greater than this value" },
 	{ OSDOPTION_CHANGERES ";cr",              "1",              OPTION_BOOLEAN,   "Enable dynamic in-game video mode switching" },
 	{ OSDOPTION_POWERSTRIP ";ps",             "0",              OPTION_BOOLEAN,   "Use Powerstrip API for dynamic setting of custom video timings" },
