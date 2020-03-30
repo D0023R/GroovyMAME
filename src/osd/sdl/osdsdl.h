@@ -137,6 +137,8 @@ public:
 	virtual void video_exit() override;
 	virtual void window_exit() override;
 
+	void extract_video_config();
+
 	// sdl specific
 	void poll_inputs(running_machine &machine);
 	void release_keys();
@@ -152,7 +154,6 @@ protected:
 private:
 	virtual void osd_exit() override;
 
-	void extract_video_config();
 	void output_oslog(const char *buffer);
 
 	sdl_options &m_options;
