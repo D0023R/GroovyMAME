@@ -105,6 +105,7 @@ const options_entry osd_options::s_option_entries[] =
 	{ OSDOPTION_REFRESH_DONT_CARE ";rdc",     "0",              OPTION_BOOLEAN,   "Ignore video mode's refresh reported by OS when checking ranges" },
 	{ OSDOPTION_DOTCLOCK_MIN ";dcm",          "0",              OPTION_FLOAT,     "Lowest pixel clock supported by video card, in MHz, default is 0" },
 	{ OSDOPTION_V_SHIFT_CORRECT,              "0",              OPTION_INTEGER,   "Apply vertical shift correction for multi-standard consumer CRT TVs"},
+	{ OSDOPTION_PIXEL_PRECISION,              "1",              OPTION_BOOLEAN,   "Calculate horizontal values with 1-pixel precision to improve horizontal centering" },
 	{ OSDOPTION_SYNC_REFRESH_TOLERANCE ";srt","2.0",            OPTION_FLOAT,     "Maximum refresh difference, in Hz, allowed in order to synchronize" },
 	{ OSDOPTION_AUTOSYNC,                     "0",              OPTION_BOOLEAN,   "automatically enable syncrefresh if refresh difference is below syncrefresh_tolerance" },
 	{ OSDOPTION_FRAME_DELAY ";fd",            "0",              OPTION_INTEGER,   "Delays the start of each frame to minimize input lag (0-9)"},
