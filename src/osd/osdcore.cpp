@@ -133,13 +133,20 @@ void osd_vprintf_debug(util::format_argument_pack<std::ostream> const &args)
 }
 
 
+#ifdef OSD_WINDOWS
+	typedef std::chrono::steady_clock s_clock;
+#else
+	typedef std::chrono::high_resolution_clock s_clock;
+#endif
+
+
 //============================================================
 //  osd_ticks
 //============================================================
 
 osd_ticks_t osd_ticks()
 {
-	return std::chrono::high_resolution_clock::now().time_since_epoch().count();
+	return s_clock::now().time_since_epoch().count();
 }
 
 
@@ -149,7 +156,7 @@ osd_ticks_t osd_ticks()
 
 osd_ticks_t osd_ticks_per_second()
 {
-	return std::chrono::high_resolution_clock::period::den / std::chrono::high_resolution_clock::period::num;
+	return s_clock::period::den / s_clock::period::num;
 }
 
 //============================================================
@@ -162,7 +169,7 @@ void osd_sleep(osd_ticks_t duration)
 // sleep_for appears to oversleep on Windows with gcc 8
 	Sleep(duration / (osd_ticks_per_second() / 1000));
 #else
-	std::this_thread::sleep_for(std::chrono::high_resolution_clock::duration(duration));
+	std::this_thread::sleep_for(s_clock::duration(duration));
 #endif
 }
 

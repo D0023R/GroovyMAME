@@ -99,7 +99,6 @@ std::vector<submenu::option> const submenu::video_options = {
 	{ submenu::option_type::OSD,  __("Video Mode"),                              OSDOPTION_VIDEO },
 	{ submenu::option_type::OSD,  __("Number Of Screens"),                       OSDOPTION_NUMSCREENS },
 #if defined(UI_WINDOWS) && !defined(UI_SDL)
-	{ submenu::option_type::OSD,  __("Triple Buffering"),                        WINOPTION_TRIPLEBUFFER },
 	{ submenu::option_type::OSD,  __("HLSL"),                                    WINOPTION_HLSL_ENABLE },
 #endif
 	{ submenu::option_type::OSD,  __("GLSL"),                                    OSDOPTION_GL_GLSL },
@@ -108,7 +107,7 @@ std::vector<submenu::option> const submenu::video_options = {
 	{ submenu::option_type::OSD,  __("Window Mode"),                             OSDOPTION_WINDOW },
 	{ submenu::option_type::EMU,  __("Enforce Aspect Ratio"),                    OPTION_KEEPASPECT },
 	{ submenu::option_type::OSD,  __("Start Out Maximized"),                     OSDOPTION_MAXIMIZE },
-	{ submenu::option_type::OSD,  __("Synchronized Refresh"),                    OSDOPTION_SYNCREFRESH },
+	{ submenu::option_type::EMU,  __("Synchronized Refresh"),                    OPTION_SYNCREFRESH },
 	{ submenu::option_type::OSD,  __("Wait Vertical Sync"),                      OSDOPTION_WAITVSYNC }
 };
 

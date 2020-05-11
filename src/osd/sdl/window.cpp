@@ -592,12 +592,15 @@ void sdl_window_info::update()
 				if (downcast<sdl_options &>(machine().options()).changeres())
 					downcast<sdl_osd_interface&>(machine().osd()).switchres()->check_resolution_change(m_index, m_monitor.get(), m_target, &m_win_config);
 
-				osd_dim tmp = this->pick_best_mode();
-				resize(tmp.width(), tmp.height());
+				if (!downcast<sdl_options &>(machine().options()).mode_setting())
+				{
+					osd_dim tmp = this->pick_best_mode();
+					resize(tmp.width(), tmp.height());
+				}
 			}
 		}
 
-		if (video_config.waitvsync && video_config.syncrefresh)
+		if (video_config.waitvsync)
 			event_wait_ticks = osd_ticks_per_second(); // block at most a second
 		else
 			event_wait_ticks = 0;

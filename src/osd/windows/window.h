@@ -148,6 +148,7 @@ private:
 	void maximize_window();
 	void adjust_window_position_after_major_change();
 	void set_fullscreen(int fullscreen);
+	void reset_fullscreen_renderer();
 	std::shared_ptr<osd_monitor_info> monitor_from_rect(const osd_rect* proposed) const;
 
 	static POINT        s_saved_cursor_pos;
