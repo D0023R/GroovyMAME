@@ -217,7 +217,7 @@ void mame_ui_manager::init()
 			config_save_delegate(&mame_ui_manager::config_save, this));
 
 	// register callbacks
-	machine().configuration().config_register("sliders", config_load_delegate(&mame_ui_manager::config_load, this), config_save_delegate(&mame_ui_manager::config_save, this));
+	machine().configuration().config_register("sliders", config_load_delegate(&mame_ui_manager::sliders_load, this), config_save_delegate(&mame_ui_manager::sliders_save, this));
 
 	// create mouse bitmap
 	uint32_t *dst = &m_mouse_bitmap.pix32(0);
@@ -1669,7 +1669,7 @@ std::vector<ui::menu_item> mame_ui_manager::slider_init(running_machine &machine
 	}
 #endif
 
-	config_apply();
+	sliders_apply();
 
 	std::vector<ui::menu_item> items;
 	for (auto &slider : m_sliders)
@@ -2410,11 +2410,11 @@ void ui_colors::refresh(const ui_options &options)
 }
 
 //-------------------------------------------------
-//  config_load - read data from the
+//  sliders_load - read data from the
 //  configuration file
 //-------------------------------------------------
 
-void mame_ui_manager::config_load(config_type cfg_type, util::xml::data_node const *parentnode)
+void mame_ui_manager::sliders_load(config_type cfg_type, util::xml::data_node const *parentnode)
 {
 	// we only care about game files
 	if (cfg_type != config_type::GAME)
@@ -2437,13 +2437,13 @@ void mame_ui_manager::config_load(config_type cfg_type, util::xml::data_node con
 
 
 //-------------------------------------------------
-//  config_appy - apply data from the conf. file
+//  sliders_appy - apply data from the conf. file
 //  This currently needs to be done on a separate
 //  step because sliders are not created yet when
 //  configuration file is loaded
 //-------------------------------------------------
 
-void mame_ui_manager::config_apply(void)
+void mame_ui_manager::sliders_apply(void)
 {
 	// iterate over sliders and restore saved values
 	for (auto &slider : m_sliders)
@@ -2463,11 +2463,11 @@ void mame_ui_manager::config_apply(void)
 
 
 //-------------------------------------------------
-//  config_save - save data to the configuration
+//  sliders_save - save data to the configuration
 //  file
 //-------------------------------------------------
 
-void mame_ui_manager::config_save(config_type cfg_type, util::xml::data_node *parentnode)
+void mame_ui_manager::sliders_save(config_type cfg_type, util::xml::data_node *parentnode)
 {
 	// we only care about game files
 	if (cfg_type != config_type::GAME)

@@ -245,11 +245,6 @@ public:
 	void start_save_state();
 	void start_load_state();
 
-	// config callbacks
-	void config_load(config_type cfg_type, util::xml::data_node const *parentnode);
-	void config_save(config_type cfg_type, util::xml::data_node *parentnode);
-	void config_apply(void);
-
 	// slider controls
 	std::vector<ui::menu_item>&  get_slider_list(void);
 
@@ -320,6 +315,9 @@ private:
 	void exit();
 	void config_load(config_type cfg_type, util::xml::data_node const *parentnode);
 	void config_save(config_type cfg_type, util::xml::data_node *parentnode);
+	void sliders_load(config_type cfg_type, util::xml::data_node const *parentnode);
+	void sliders_save(config_type cfg_type, util::xml::data_node *parentnode);
+	void sliders_apply(void);
 	std::unique_ptr<slider_state> slider_alloc(int id, const char *title, int32_t minval, int32_t defval, int32_t maxval, int32_t incval, void *arg);
 
 	// slider controls
